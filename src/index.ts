@@ -10,7 +10,8 @@ type Task = {
 const list = document.querySelector<HTMLUListElement>('#list')
 const form = document.getElementById('new_task_form') as HTMLFormElement | null
 const input = document.querySelector<HTMLInputElement>('#new_task_title')
-const tasks: Task[] = []
+const tasks: Task[] = loadTasks()
+tasks.forEach(addListItem)
 
 form?.addEventListener("submit", e =>{
   e.preventDefault()
@@ -45,7 +46,13 @@ function  addListItem(task: Task){
   item.append(label)
   list?.append(item)
 }
-
+//save in local storage
 function  saveTasks(){
-  
+  localStorage.setItem("TASKS", JSON.stringify(tasks))
+}
+
+function loadTasks(): Task[] {
+  const taskJSON = localStorage.getItem("TASKS")
+  if(taskJSON == null) return []
+  return JSON.parse(taskJSON)
 }
