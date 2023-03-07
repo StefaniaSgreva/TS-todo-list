@@ -27,6 +27,7 @@ h1{
     margin: 0;
     background: #fff;
     line-height: 1;
+    text-align: center;
 }
 #list{
     list-style: none;
@@ -62,3 +63,8 @@ button:hover{
 button:active{
     transform: scale(1);
 }
+/* #new_task_form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
